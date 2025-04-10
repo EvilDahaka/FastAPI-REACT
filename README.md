@@ -61,7 +61,7 @@ This project is a full-stack web application built with FastAPI for the backend 
 3.  Start the React development server:
 
     ```bash
-    npm start
+    npm run dev
     ```
 ### How to install libraries
 1. Go to the backend folder and run the command:
