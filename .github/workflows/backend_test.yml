@@ -21,8 +21,9 @@ jobs:
 
       - name: Install dependencies
         run: |
+          cd backend
           python -m pip install --upgrade pip
-          pip install -r requirements.txt || true  # якщо requirements.txt нема — не завалить білд
+          pip install -r requirements.txt 
 
       - name: Run tests
         run: pytest
