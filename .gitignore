@@ -140,6 +140,6 @@ dist
 .pnp.*
 
 .vscode/*
-
+*.db
 __pycache__/*
 *.pyc
