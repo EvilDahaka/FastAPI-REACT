@@ -1,0 +1,35 @@
+name: Pipeline for Backend
+
+on:
+  push:
+    branches: [ main,dev ]
+  pull_request:
+    branches: [ main,dev ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'  # або інша версія, яку ти використовуєш
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt 
+      
+      - name: Run migrations
+        run: |
+          python models.py
+          uvicorn main:app --reload  
+          
+
+      - name: Run tests
+        run: pytest
