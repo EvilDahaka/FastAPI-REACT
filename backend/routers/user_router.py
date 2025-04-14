@@ -3,10 +3,10 @@ from config import jwt_config
 from database import get_session
 from fastapi import APIRouter, Depends, HTTPException, Request, Response
 from passlib.context import CryptContext
-from repositories.user import UserRepositories as user_repo
+from repositories.repo_user import UserRepositories as user_repo
 from schemas.users import UserCreate, UserLogin, UserOut
 
-router = APIRouter()
+router = APIRouter(tags=["Users"])
 
 
 authx_security = AuthX(config=jwt_config)
@@ -40,8 +40,10 @@ async def register(creds: UserCreate, response: Response, session=Depends(get_se
     return {"msg": "User created successfully"}
 
 @router.get("/logout")
-async def logout():
-    return {"message": "Logout endpoint"}
+async def logout(response: Response):
+    response.delete_cookie(key="access_token")
+    return {"message": "Logout successful"}
+
 
 @router.get("/me", response_model=UserOut)
 async def me(request: Request, session=Depends(get_session)):

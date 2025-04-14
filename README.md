@@ -73,85 +73,66 @@ pip install <library_name>
 npm install <library_name>
 ```
 ### TO DO
-📅 Тиждень 1 — Фундамент і кістяк
-🎯 Ціль: каркас проєкту, авторизація, база
-Backend:
+#### 📅 Week 1 — Foundation and Structure
+**🎯 Goal:** Project skeleton, authentication, database
 
-    FastAPI + Docker
+**Backend:**
+- [ ] FastAPI + Docker
+- [ ] SQLAlchemy + Alembic
+- [X] Auth: JWT (registration, login, /me)
+- [ ] Models: User, Product, Category, CartItem
+- [X] Endpoints:
+    - [X] POST /register
+    - [X] POST /login
+    - [X] GET /me
+    - [X] GET /products/
+    - [X] GET /products/{id}
 
-    SQLAlchemy + Alembic
+**Frontend:**
+- [ ] React scaffolding (Vite or Create React App)
+- [ ] React Router (routes: /, /product/:id, /login, /register)
+- [ ] Axios
+- [ ] Display product list (unstyled for now)
+- [ ] Components: ProductCard, ProductPage, Header
 
-    Auth: JWT (реєстрація, логін, /me)
+**DevOps:**
+- [ ] Docker Compose: frontend, backend, db
+- [ ] SQLite or PostgreSQL (depending on experience)
 
-    Моделі: User, Product, Category, CartItem
+---
 
-    Ендпоінти:
+#### 📅 Week 2 — Cart and Logic
+**🎯 Goal:** User, cart, adding products
 
-        POST /register, POST /login, GET /me
+**Backend:**
+- [ ] Cart model: CartItem (user_id, product_id, quantity)
+- [ ] Endpoints:
+    - [ ] POST /cart/add
+    - [ ] GET /cart/
+    - [ ] DELETE /cart/{item_id}
+- [ ] Basic rules: do not add the same product twice, increase quantity instead
 
-        GET /products/, GET /products/{id}
+**Frontend:**
+- [ ] Cart with local or global state (Context or Redux)
+- [ ] Cart page
+- [ ] Authentication integration: storing JWT
+- [ ] Display user profile (GET /me)
+- [ ] Simple design (Tailwind or plain CSS)
 
-Frontend:
+---
 
-    React scaffolding (Vite або Create React App)
+#### 📅 Week 3 — Polishing, Admin Panel, Extras
+**🎯 Goal:** Make the MVP beautiful and stable
 
-    React Router (маршрути: /, /product/:id, /login, /register)
+**Backend:**
+- [ ] Admin panel: POST /products/ for adding products
+- [ ] Product categories: GET /categories/
+- [ ] Product filtering by categories (query parameter)
+- [ ] Validations, error handling, Swagger documentation
 
-    Axios
-
-    Показ списку товарів (поки що без стилів)
-
-    Компоненти: ProductCard, ProductPage, Header
-
-DevOps:
-
-    Docker Compose: frontend, backend, db
-
-    SQLite або PostgreSQL (залежно від досвіду)
-
-📅 Тиждень 2 — Кошик і логіка
-🎯 Ціль: користувач, кошик, додавання товарів
-Backend:
-
-    Модель кошика: CartItem (user_id, product_id, quantity)
-
-    Ендпоінти:
-
-        POST /cart/add, GET /cart/, DELETE /cart/{item_id}
-
-    Базові правила: не додавати один товар двічі, а збільшувати кількість
-
-Frontend:
-
-    Кошик з локальним або глобальним стейтом (Context або Redux)
-
-    Сторінка кошика
-
-    Інтеграція авторизації: зберігання JWT
-
-    Відображення профілю користувача (GET /me)
-
-    Простий дизайн (Tailwind або просто CSS)
-
-📅 Тиждень 3 — Шліфування, адмінка, бонуси
-🎯 Ціль: зробити MVP красивим і стабільним
-Backend:
-
-    Адмінка: POST /products/ для додавання товарів
-
-    Категорії товарів: GET /categories/
-
-    Фільтрація товарів по категоріях (query-параметр)
-
-    Валідації, помилки, Swagger документація
-
-Frontend:
-
-    Фільтр товарів по категоріях
-
-    Форма реєстрації, логіну, додавання товару
-
-    Покращення дизайну, адаптивність
-
-    Обробка помилок (наприклад, неправильний логін)
+**Frontend:**
+- [ ] Product filtering by categories
+- [ ] Forms for registration, login, adding products
+- [ ] Design improvements, responsiveness
+- [ ] Error handling (e.g., invalid login)
 
