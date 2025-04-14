@@ -27,6 +27,7 @@ jobs:
       
       - name: Run migrations
         run: |
+          cd backend
           python models.py
           uvicorn main:app --reload  
           
