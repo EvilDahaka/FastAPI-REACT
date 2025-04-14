@@ -1,6 +1,10 @@
 import logging
 import select
-from schemas.users import UserModel
+from typing import Optional
+from models import UserModel
+
+from schemas.users import UserOut
+
 
 from sqlalchemy import select
 
@@ -18,7 +22,20 @@ class UserRepositories:
         log.debug(result)
         return result.scalar_one_or_none()
     
-    async def get_user(self, uid: str):
+    async def get_user(self, uid: str) -> UserOut:
         stmt = select(UserModel).where(UserModel.id == int(uid))
         result = await self.session.execute(stmt)
-        return result.scalar_one()
+        user = result.scalar_one()
+        result = UserOut.validate(user)
+        return result
+    
+    async def create_user(self, email: str, password: str, username: Optional[str] = None):
+        user = UserModel(
+            username=username,  # Provide a default username if None
+            email=email,
+            password=password,
+            is_admin=False,
+        )
+        self.session.add(user)
+        await self.session.commit()
+        await self.session.refresh(user)
