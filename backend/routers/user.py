@@ -52,11 +52,10 @@ async def me(request: Request, session=Depends(get_session)):
     repo = user_repo(session)
     try:
         user = await repo.get_user(uid)
-    except Exception as e:
+        if not user:
+            raise HTTPException(status_code=404, detail="User not found")
+    except Exception:
         raise HTTPException(status_code=404, detail="User not found or invalid token")
-    user = await repo.get_user(uid)
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
 
     return user
 
