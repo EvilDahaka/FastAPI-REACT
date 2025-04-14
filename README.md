@@ -89,7 +89,7 @@ npm install <library_name>
     - [X] GET /products/{id}
 
 **Frontend:**
-- [] React scaffolding (Vite or Create React App)
+- [ ] React scaffolding (Vite or Create React App)
 - [ ] React Router (routes: /, /product/:id, /login, /register)
 - [ ] Axios
 - [ ] Display product list (unstyled for now)
